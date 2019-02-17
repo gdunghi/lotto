@@ -1,0 +1,14 @@
+<p>
+</p>
+<form>
+  <select [formControl]="period">
+    <option>01 กุมภาพันธ์ 2061</option>
+    <option>16 กุมภาพันธ์ 2061</option>
+  </select><br>
+  <input [formControl]="lottoNumber">
+  <input type="button" value="ตรวจ" (click)="check()">
+  <input type="button" value="ล้าง">
+</form>
+<ul *ngFor="let r of result">
+  <li>{{r}}</li>
+</ul>
