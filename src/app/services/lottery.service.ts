@@ -1,11 +1,14 @@
-import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 
 export class LotteryService {
-
+  subResult = ['1', '2'];
   constructor() {
   }
 
-  lottoResult(): string[] {
-    return ['123456', '02'];
+  lottoResult(): Observable<string[]> {
+    return new Observable((ob) => {
+      ob.next(this.subResult);
+      ob.complete();
+    });
   }
 }
