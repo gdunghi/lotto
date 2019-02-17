@@ -1,16 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {LotteryService} from '../services/lottery.service';
 
 @Component({
   selector: 'app-lotto',
   templateUrl: './lotto.component.html',
-  styleUrls: ['./lotto.component.scss']
+  styleUrls: ['./lotto.component.scss'],
 })
 export class LottoComponent implements OnInit {
   formGroup: FormGroup;
-  result = ['12345678', '02'];
+  result = [];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private lotteryService: LotteryService) {
   }
 
   ngOnInit() {
@@ -22,9 +23,12 @@ export class LottoComponent implements OnInit {
   }
 
   check() {
-    if(this.formGroup.invalid){
-        alert("error");
+    if (this.formGroup.invalid) {
+      alert('error');
+    } else {
+      this.result = this.lotteryService.lottoResult();
     }
+
     // if (this.period.invalid || this.lottoNumber.invalid) {
     //   alert('error');
     // }
