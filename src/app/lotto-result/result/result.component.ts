@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ResultComponent implements OnInit {
   lottos: Lotto[];
   period: "";
+  lottoNumber: "";
   constructor(private service: LotteryService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -19,6 +20,7 @@ export class ResultComponent implements OnInit {
     })
     this.activatedRoute.params.subscribe((param) => {
       this.period = param["period"];
+      this.lottoNumber = param["lotto_number"];
     });
   }
 

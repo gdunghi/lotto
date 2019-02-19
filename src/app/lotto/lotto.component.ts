@@ -56,7 +56,7 @@ export class LottoComponent implements OnInit {
   }
 
   goToResultPage() {
-    this.router.navigate(["/lotto-result/20190216"]);
+    this.router.navigate(["/lotto-result/20190216", { "lotto_number": "216" }]);
   }
 
 }
