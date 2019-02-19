@@ -3,7 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { ResultComponent } from './result/result.component';
 
 const routes: Routes = [
-  { path: '', component: ResultComponent }
+  // { path: '', component: ResultComponent },
+  { path: ':period', component: ResultComponent }
+
 ];
 
 @NgModule({
