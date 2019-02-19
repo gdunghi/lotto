@@ -9,6 +9,6 @@ export class LotteryService {
   }
 
   lottoResult(period: string, lottoNo: string): Observable<Lotto[]> {
-    return this.http.get<Lotto[]>(`http://www.mocky.io/v2/5c6bbfa5320000671bbef5c9`);
+    return this.http.get<Lotto[]>(`http://www.mocky.io/v2/5c6bc21c320000fb1cbef5e1`);
   }
 }

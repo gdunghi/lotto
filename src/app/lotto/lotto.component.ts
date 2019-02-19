@@ -32,6 +32,7 @@ export class LottoComponent implements OnInit, OnDestroy {
   }
 
   check() {
+    this.found = null;
     if (this.formGroup.invalid) {
       alert('error');
     } else {
@@ -40,10 +41,7 @@ export class LottoComponent implements OnInit, OnDestroy {
 
       this.sub = this.lotteryService.lottoResult(period, lottoNo).subscribe((r) => {
         this.result = r;
-        this.found = r.find((rs) => {
-          return rs.bigPrize === lottoNo || rs.lastThreeDigitPrize === lottoNo;
-        });
-
+        this.found = r.find(item => item.period === period);
       }, (err) => {
         alert(err);
       });
@@ -51,16 +49,16 @@ export class LottoComponent implements OnInit, OnDestroy {
   }
 
 
-  checkLastThreeDigitPrize(lottoNo: string, lastThreeDigitPrize: string): boolean {
-    if (lastThreeDigitPrize) {
-      if (lottoNo.substr(3, 6) === lastThreeDigitPrize) {
-        return true;
-      }
+  checkLastThreeDigitPrize(): boolean {
+    if (this.formGroup.get("lottoNumber").value.substr(3, 6) === this.found.lastThreeDigitPrize) {
+      return true;
     }
-
-    return false
+    return false;
   }
 
+  checkBigPrize(): boolean {
+    return this.formGroup.get("lottoNumber").value === this.found.bigPrize;
+  }
 
 
 }
