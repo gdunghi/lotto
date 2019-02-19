@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LotteryService } from '../services/lottery.service';
@@ -14,7 +15,7 @@ export class LottoComponent implements OnInit {
   found: Lotto = new Lotto();
   result = [];
 
-  constructor(private formBuilder: FormBuilder, private lotteryService: LotteryService) {
+  constructor(private formBuilder: FormBuilder, private lotteryService: LotteryService, private router: Router) {
   }
 
   ngOnInit() {
@@ -54,5 +55,8 @@ export class LottoComponent implements OnInit {
     return this.formGroup.get("lottoNumber").value === this.found.bigPrize;
   }
 
+  goToResultPage() {
+    this.router.navigate(["/lotto-result"]);
+  }
 
 }
