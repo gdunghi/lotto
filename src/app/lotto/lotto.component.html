@@ -1,4 +1,11 @@
-<p>
+<p *ngIf="found">
+  <span *ngIf="found.bigPrize === formGroup.controls.lottoNumber.value">
+    คุณถูกรางวัลที่ 1
+  </span>
+  <br>
+  <span *ngIf="checkLastThreeDigitPrize(formGroup.controls.lottoNumber.value,found.lastThreeDigitPrize)">
+      คุณถูกรางวัลที่ เลขท้ายสามตัว
+    </span>
 </p>
 <form [formGroup]="formGroup">
   <select formControlName="period">
@@ -9,6 +16,7 @@
   <input type="button" value="ตรวจ" (click)="check()">
   <input type="button" value="ล้าง" >
 </form>
+
 <ul *ngFor="let r of result">
-  <li>{{r}}</li>
+  <li>{{r.bigPrize}}</li>
 </ul>
