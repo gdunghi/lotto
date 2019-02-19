@@ -41,7 +41,6 @@ export class LottoComponent implements OnInit, OnDestroy {
 
       this.sub = this.lotteryService.lottoResult(period, lottoNo).subscribe((r) => {
         this.result = r;
-        this.found = r.find(item => item.period === period);
       }, (err) => {
         alert(err);
       });
