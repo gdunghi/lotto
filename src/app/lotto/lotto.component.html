@@ -16,7 +16,9 @@
   <input type="button" value="ตรวจ" (click)="check()">
   <input type="button" value="ล้าง" >
 </form>
-
+<a [routerLink]="['/lotto-result']">
+  link to all lotto
+</a>
 <ul *ngFor="let r of result">
   <li>{{r.bigPrize}}</li>
 </ul>

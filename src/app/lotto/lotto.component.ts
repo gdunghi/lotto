@@ -9,9 +9,8 @@ import { Lotto } from './lotto';
   templateUrl: './lotto.component.html',
   styleUrls: ['./lotto.component.scss'],
 })
-export class LottoComponent implements OnInit, OnDestroy {
+export class LottoComponent implements OnInit {
   formGroup: FormGroup;
-  sub: Subscription;
   found: Lotto = new Lotto();
   result = [];
 
@@ -27,10 +26,6 @@ export class LottoComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
-
   check() {
     this.found = null;
     if (this.formGroup.invalid) {
@@ -39,7 +34,7 @@ export class LottoComponent implements OnInit, OnDestroy {
       let lottoNo = this.formGroup.get("lottoNumber").value;
       let period = this.formGroup.get("period").value;
 
-      this.sub = this.lotteryService.lottoResult(period, lottoNo).subscribe((r) => {
+      this.lotteryService.lottoResult(period, lottoNo).subscribe((r) => {
         this.result = r;
       }, (err) => {
         alert(err);

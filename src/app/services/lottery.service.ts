@@ -16,4 +16,8 @@ export class LotteryService {
       })
     );
   }
+
+  getAll(): Observable<Lotto[]> {
+    return this.http.get<Lotto[]>(`http://www.mocky.io/v2/5c6bc21c320000fb1cbef5e1`);
+  }
 }
